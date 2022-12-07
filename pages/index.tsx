@@ -1,8 +1,14 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import Services from '../components/Services';
 
 const Home = () => {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <Services />
+    </>
+  );
 };
 
 export default Home;
