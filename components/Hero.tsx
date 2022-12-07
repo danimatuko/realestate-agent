@@ -80,7 +80,7 @@ const Hero = () => {
             className='h-full object-cover'
             style={{
               backgroundImage:
-                'url(https://images.pexels.com/photos/7821514/pexels-photo-7821514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+                'url(https://images.pexels.com/photos/6798002/pexels-photo-6798002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
             }}>
             <div className='h-full bg-black opacity-25'></div>
           </div>
@@ -91,3 +91,4 @@ const Hero = () => {
 };
 
 export default Hero;
+//                 'url(https://images.pexels.com/photos/7821514/pexels-photo-7821514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
