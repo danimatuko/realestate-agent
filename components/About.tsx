@@ -3,17 +3,8 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section className='flex container justify-center mx-auto py-32'>
-      <div className='flex-1'>
-        <Image
-          className='rounded'
-          width={550}
-          height={400}
-          alt='broker'
-          src='https://images.pexels.com/photos/7821743/pexels-photo-7821743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-        />
-      </div>
-      <div className='flex-1 py-32'>
+    <section className='container flex justify-center gap-32 mx-auto py-32'>
+      <div className='w-1/2 py-32'>
         <h2 className='text-4xl mb-8'>About Me</h2>
         <p className='text-gray-500 text-lg mb-4'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo,
@@ -29,6 +20,15 @@ const About = () => {
           asperiores, veritatis ea nemo minus natus ratione! perspiciatis
           consequuntur omnis quibusdam dignissimos porro illum fugiat ad
         </p>
+      </div>
+      <div>
+        <Image
+          className='rounded'
+          width={450}
+          height={400}
+          alt='broker'
+          src='https://images.pexels.com/photos/7821743/pexels-photo-7821743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        />
       </div>
     </section>
   );
