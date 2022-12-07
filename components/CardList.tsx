@@ -7,7 +7,7 @@ const CardList = () => {
       <h2 className='text-4xl text-center mb-16'>Featured Properties</h2>
       <div className='flex justify-around gap-8'>
         {[...Array(3).keys()].map(() => (
-          <Card />
+          <Card key={Math.random()} />
         ))}
       </div>
     </section>
