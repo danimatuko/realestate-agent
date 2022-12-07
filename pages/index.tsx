@@ -1,11 +1,8 @@
 import React from 'react';
+import Hero from '../components/Hero';
 
 const Home = () => {
-  return (
-    <h1 className='text-6xl text-green-500 font-bold underline'>
-      Hello world!
-    </h1>
-  );
+  return <Hero />;
 };
 
 export default Home;
