@@ -51,7 +51,7 @@ const Hero = () => {
           <div>
             <h1 className='text-3xl font-semibold text-gray-800 md:text-5xl mb-4'>
               Your Future Home Is Right
-              <span className='text-indigo-600 px-1'>Here</span>
+              <span className='text-primary px-1'>Here</span>
             </h1>
             <p className='mt-2 text-sm text-gray-500 md:text-lg'>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -60,15 +60,16 @@ const Hero = () => {
               Cumque debitis dignissimos id quam vel!
             </p>
             <div className='flex justify-center lg:justify-start mt-6'>
-              <input
-                type='text'
-                className='border mr-1 w-72'
-              />
-              <a
-                className='px-4 py-3 bg-gray-900 text-gray-200 font-semibold rounded hover:bg-gray-800'
-                href='#'>
-                Call Me
-              </a>
+              <div className='form-control'>
+                <div className='input-group'>
+                  <input
+                    type='text'
+                    placeholder='Leave your number...'
+                    className='input input-bordered w-72 focus:outline-none'
+                  />
+                  <button className='btn '>Call Me</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
