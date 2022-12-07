@@ -44,20 +44,18 @@ const Hero = () => {
           </div>
         </div>
       </nav>
-      <div
-        className='flex bg-white'
-        style={{ height: '600px' }}>
+      <div className='flex bg-white h-[35rem]'>
         <div className='flex items-center text-center lg:text-left px-8 md:px-12 lg:w-1/2'>
           <div>
             <h1 className='text-3xl font-semibold text-gray-800 md:text-5xl mb-4'>
               Your Future Home Is Right
               <span className='text-primary px-1'>Here</span>
             </h1>
-            <p className='mt-2 text-sm text-gray-500 md:text-lg'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Blanditiis commodi cum cupiditate ducimus, fugit harum id
-              necessitatibus odio quam quasi, quibusdam rem tempora voluptates.
-              Cumque debitis dignissimos id quam vel!
+            <p className='mt-2 text-sm text-gray-500 md:text-2xl'>
+              Whether buying or selling in Vancouver, I am dedicated in treating
+              your transaction with the upmost of care and trust. Call or e-mail
+              me with any questions you have about buying or selling real
+              estate.
             </p>
             <div className='flex justify-center lg:justify-start mt-6'>
               <div className='form-control'>
