@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Card = () => {
@@ -16,7 +17,11 @@ const Card = () => {
         <h2 className='card-title'>Shoes!</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className='card-actions justify-end'>
-          <button className='btn btn-primary'>Details</button>
+          <Link
+            href={'/assets/1'}
+            className='btn btn-primary'>
+            Details
+          </Link>
         </div>
       </div>
     </div>
