@@ -1,22 +1,49 @@
 import React, { useState } from 'react';
 import { IAsset } from '../../interface/IAsset';
 
+type inputProps = {
+  name: string;
+  value: string;
+};
+
+type checkboxProps = {
+  name: string;
+  checked: boolean;
+  value: string;
+};
+
 const Post = () => {
-  const [asset, setAsset] = useState<IAsset | null>(null);
+  const [asset, setAsset] = useState<null | object>(null);
+
+  const inputChangeHandler = ({ name, value }: inputProps) => {
+    setAsset({ ...asset, [name]: value });
+  };
+
+  const checkboxChangeHandler = ({ name, checked, value }: checkboxProps) => {
+    console.log(value);
+    setAsset({ ...asset, [name]: checked });
+  };
+
+  const onSubmitHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(asset);
+  };
 
   return (
     <div className='py-16 bg-base-200 min-h-screen h-full text-lg'>
       <div className='container mx-auto max-w-screen-lg'>
         <h1 className='text-6xl text-center mb-16'>Add new asset</h1>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <div className='grid grid-cols-2 gap-x-16 gap-y-4'>
             <label className='col-span-2'>
               <span className='block font-medium text-slate-700 mb-2'>
                 Address
               </span>
               <input
+                name='address'
                 type='text'
                 className='input w-full mb-4'
+                onChange={(e) => inputChangeHandler(e.target)}
               />
             </label>{' '}
             <div>
@@ -24,10 +51,14 @@ const Post = () => {
                 <span className='block font-medium text-slate-700 mb-2'>
                   Type
                 </span>
-                <select className='select w-full mb-4'>
+                <select
+                  name='type'
+                  className='select w-full mb-4'
+                  defaultValue='Pick your favorite Simpson'
+                  onChange={(e) => inputChangeHandler(e.target)}>
                   <option
-                    disabled
-                    selected>
+                    value='Pick your favorite Simpson'
+                    disabled>
                     Pick your favorite Simpson
                   </option>
                   <option>Homer</option>
@@ -42,8 +73,10 @@ const Post = () => {
                   Price
                 </span>
                 <input
+                  name='price'
                   type='number'
                   className='input w-full mb-4'
+                  onChange={(e) => inputChangeHandler(e.target)}
                 />
               </label>
               <label className='w-1/2 mb-4'>
@@ -53,18 +86,20 @@ const Post = () => {
                 <label className='flex items-center gap-2'>
                   <span className='mr-1'>Yes</span>
                   <input
+                    name='parking'
                     type='radio'
-                    name='radio-10'
+                    value='yes'
                     className='radio checked:bg-green-500'
-                    checked
+                    onChange={(e) => inputChangeHandler(e.target)}
                   />
                   <label className='label cursor-pointer'>
                     <span className='mr-1'>No</span>
                     <input
+                      name='parking'
                       type='radio'
-                      name='radio-10'
+                      value='no'
                       className='radio checked:bg-blue-500'
-                      checked
+                      onChange={(e) => inputChangeHandler(e.target)}
                     />
                   </label>
                 </label>
@@ -77,8 +112,10 @@ const Post = () => {
                     Size
                   </span>
                   <input
+                    name='size'
                     type='number'
                     className='input w-full mb-4'
+                    onChange={(e) => inputChangeHandler(e.target)}
                   />
                 </label>{' '}
                 <label className='w-1/2'>
@@ -86,8 +123,10 @@ const Post = () => {
                     Bedrooms
                   </span>
                   <input
+                    name='bedrooms'
                     type='number'
                     className='input w-full mb-4'
+                    onChange={(e) => inputChangeHandler(e.target)}
                   />
                 </label>
               </div>{' '}
@@ -96,8 +135,10 @@ const Post = () => {
                   Images
                 </span>
                 <input
+                  name='imageURL'
                   type='file'
                   className='input w-full mb-4'
+                  onChange={(e) => inputChangeHandler(e.target)}
                 />
               </label>
               <label className='w-1/2'>
@@ -107,25 +148,31 @@ const Post = () => {
                 <label className='flex items-center gap-2'>
                   <span className='mr-1'>Rent</span>
                   <input
+                    name='offerdFor'
                     type='radio'
-                    name='radio-10'
+                    value='rent'
                     className='radio checked:bg-green-500'
-                    checked
+                    onChange={(e) => inputChangeHandler(e.target)}
                   />
                   <label className='label cursor-pointer'>
                     <span className='mr-1'>Sale</span>
                     <input
+                      name='offerdFor'
                       type='radio'
-                      name='radio-10'
+                      value='sale'
                       className='radio checked:bg-blue-500'
-                      checked
+                      onChange={(e) => inputChangeHandler(e.target)}
                     />
                   </label>
                 </label>
               </label>{' '}
             </div>
-          </div>{' '}
-          <button className='btn btn-wide btn-lg mt-8'>Post</button>
+          </div>
+          <button
+            type='submit'
+            className='btn btn-wide btn-lg mt-8'>
+            Post
+          </button>
         </form>
       </div>
     </div>
