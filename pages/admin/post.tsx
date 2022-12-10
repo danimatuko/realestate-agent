@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import { IAsset } from '../../interface/IAsset';
 
 type inputProps = {
   name: string;
-  value: string;
-};
-
-type checkboxProps = {
-  name: string;
-  checked: boolean;
   value: string;
 };
 
@@ -17,11 +10,6 @@ const Post = () => {
 
   const inputChangeHandler = ({ name, value }: inputProps) => {
     setAsset({ ...asset, [name]: value });
-  };
-
-  const checkboxChangeHandler = ({ name, checked, value }: checkboxProps) => {
-    console.log(value);
-    setAsset({ ...asset, [name]: checked });
   };
 
   const onSubmitHandler = (e: React.FormEvent) => {
