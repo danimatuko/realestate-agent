@@ -8,7 +8,7 @@ const Carousel = () => {
         className='carousel-item relative w-full'>
         <img
           src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
-          className='w-full'
+          className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
           <a
@@ -28,7 +28,7 @@ const Carousel = () => {
         className='carousel-item relative w-full'>
         <img
           src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
-          className='w-full'
+          className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
           <a
@@ -48,7 +48,7 @@ const Carousel = () => {
         className='carousel-item relative w-full'>
         <img
           src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
-          className='w-full'
+          className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
           <a
@@ -68,7 +68,7 @@ const Carousel = () => {
         className='carousel-item relative w-full'>
         <img
           src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
-          className='w-full'
+          className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
           <a

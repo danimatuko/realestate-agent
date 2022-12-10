@@ -1,53 +1,51 @@
 import React from 'react';
-import Details from '../components/Asset/Details';
+import AssetDetails from '../components/Asset/AssetDetails';
 import Map from '../components/Asset/Map';
 import Carousel from '../components/Carousel';
+import { IAssetDetails } from '../interface/IAssetDetails';
 
-interface IAssetDetails {
-  id: string;
-  Location: string;
-  Type: string;
-  Price: number;
-  Size: number;
-  Bedrooms: number;
-  Bathrooms: number;
-  parking: boolean;
-}
-
-const Assets = () => {
+// sample value to test Asset implementation of IAssetDetails
+const assetProps: IAssetDetails = {
+  id: 'string',
+  postedOn: new Date(),
+  address: 'string',
+  type: 'string',
+  price: 5,
+  size: 5,
+  bedrooms: 5,
+  parking: true,
+  offeredFor: 'sale',
+};
+const Asset = () => {
   return (
     <div className='container mx-auto mt-16'>
       <div className='grid grid-cols-4 gap-16'>
         <div className='col-span-3'>
           <div className='flex justify-between mb-8'>
             <h1 className='text-4xl'>20 Rumble Street</h1>
-            <div className='text-gray-600 font-semibold text-3xl'>
-              $1,430,000
+            <div className='flex items-center gap-2'>
+              <span className='text-gray-600 font-semibold text-3xl'>
+                $1,430,000
+              </span>
+              <span className='badge badge-lg bg-indigo-900 py-4'>
+                For Sale
+              </span>
             </div>
           </div>
           <Carousel />
-          <p className='py-16'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            quasi molestias temporibus ex vitae quod aliquid illo, amet aperiam
-            laudantium cumque dolorum fuga inventore, sapiente error maxime ea
-            quia dolores? Minus perferendis vitae vel molestias ea nisi id
-            mollitia blanditiis. Sit consequuntur blanditiis fugiat excepturi?
-            Repellat ex minus deserunt explicabo quisquam quod quasi? Nulla,
-            quibusdam sunt dolor aspernatur at laboriosam. Id dolor facere quo,
-            deserunt sed autem quidem facilis nihil obcaecati amet et similique
-            aliquid cum, molestias omnis fuga voluptas libero voluptatibus
-            excepturi inventore consectetur ad non fugit nesciunt. Mollitia. Sit
-            ratione voluptas, quam nihil fugiat eum quia ea odio corporis,
-            libero non. Minus excepturi nemo obcaecati quasi saepe! Consectetur
-            architecto natus debitis, odit at laboriosam nostrum ex aperiam.
-            Delectus! Ea saepe nihil consequatur numquam quasi beatae rem a,
-            nesciunt reprehenderit atque similique voluptatem mollitia odio
-            quisquam hic iste neque. Soluta beatae velit et. Ex libero quas cum
-            exercitationem ipsum.
+          <h2 className='text-3xl pt-16 pb-4'>Asset Brief</h2>
+          <p className='text-lg'>
+            Residences can be classified by and how they are connected to
+            neighbouring residences and land. Different types of housing tenure
+            can be used for the same physical type. connected residences might
+            be owned by a single entity and leased out, or owned separately with
+            an agreement covering the relationship between units and common.
+            they are connected to neighbouring residences and land. Different
+            types of housing tenure can be used for the same physical type.
           </p>
         </div>
         <div>
-          <Details />
+          <AssetDetails {...assetProps} />
         </div>
         <div className='container mx-auto w-[60vw] h-[35rem]'>
           <Map />
@@ -57,4 +55,4 @@ const Assets = () => {
   );
 };
 
-export default Assets;
+export default Asset;

@@ -1,10 +1,11 @@
 import React from 'react';
+import { IAssetDetails } from '../../interface/IAssetDetails';
 
-const Details = () => {
+const AssetDetails: React.FC<IAssetDetails> = (props) => {
   return (
     <>
       <ul className='flex flex-col text-lg border-l pl-8'>
-        <h2 className='text-xl font-semibold mb-2'>About Property</h2>
+        <h2 className='text-xl font-semibold mb-2'>About Asset</h2>
         <li className='flex items-center'>
           <span className='w-24 mr-8'>Location</span>
           <span>Jerusalem </span>
@@ -34,4 +35,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default AssetDetails;

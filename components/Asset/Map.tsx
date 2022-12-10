@@ -19,17 +19,18 @@ function Map() {
     []
   );
 
-  const [map, setMap] = React.useState();
-
   return (
-    isLoaded && (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={15}>
-        <MarkerF position={center} />
-      </GoogleMap>
-    )
+    <>
+      <h2 className='text-3xl mb-4'>The Area</h2>
+      {isLoaded && (
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={15}>
+          <MarkerF position={center} />
+        </GoogleMap>
+      )}
+    </>
   );
 }
 
