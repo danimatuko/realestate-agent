@@ -1,8 +1,9 @@
+import { useRouter } from 'next/router';
 import React from 'react';
-import AssetDetails from '../components/Asset/AssetDetails';
-import Map from '../components/Asset/Map';
-import Carousel from '../components/Carousel';
-import { IAssetDetails } from '../interface/IAssetDetails';
+import AssetDetails from '../../components/Asset/AssetDetails';
+import Map from '../../components/Asset/Map';
+import Carousel from '../../components/Carousel';
+import { IAssetDetails } from '../../interface/IAssetDetails';
 
 // sample value to test Asset implementation of IAssetDetails
 const assetProps: IAssetDetails = {
@@ -16,7 +17,12 @@ const assetProps: IAssetDetails = {
   parking: true,
   offeredFor: 'sale',
 };
+
 const Asset = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id);
+
   return (
     <div className='container mx-auto mt-16'>
       <div className='grid grid-cols-4 gap-16'>

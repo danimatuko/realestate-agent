@@ -1,3 +1,5 @@
+import { offeredFor } from '../types';
+
 export interface IAssetDetails {
   id: string;
   postedOn: Date;
@@ -7,5 +9,5 @@ export interface IAssetDetails {
   size: number;
   bedrooms: number;
   parking: boolean;
-  offeredFor: 'sale' | 'rent';
+  offeredFor: offeredFor;
 }
