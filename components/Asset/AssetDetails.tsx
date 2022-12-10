@@ -1,5 +1,5 @@
 import React from 'react';
-import { IAssetDetails } from '../../interface/IAssetDetails';
+import { IAssetDetails } from '../../interface/IAsset';
 
 const AssetDetails: React.FC<IAssetDetails> = (props) => {
   return (

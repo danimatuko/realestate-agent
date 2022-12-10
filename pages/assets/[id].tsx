@@ -3,10 +3,10 @@ import React from 'react';
 import AssetDetails from '../../components/Asset/AssetDetails';
 import Map from '../../components/Asset/Map';
 import Carousel from '../../components/Carousel';
-import { IAssetDetails } from '../../interface/IAssetDetails';
+import { IAsset } from '../../interface/IAsset';
 
 // sample value to test Asset implementation of IAssetDetails
-const assetProps: IAssetDetails = {
+const assetProps: IAsset = {
   id: 'string',
   postedOn: new Date(),
   address: 'string',
@@ -16,6 +16,8 @@ const assetProps: IAssetDetails = {
   bedrooms: 5,
   parking: true,
   offeredFor: 'sale',
+  imgURL:
+    'https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg?auto=compress&cs=tinysrgb&w=1600',
 };
 
 const Asset = () => {

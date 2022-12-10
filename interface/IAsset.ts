@@ -1,9 +1,10 @@
 import { offeredFor } from '../types';
 
-export interface IAssetDetails {
+export interface IAsset {
   id: string;
   postedOn: Date;
   address: string;
+  imgURL: string;
   type: string;
   price: number;
   size: number;
