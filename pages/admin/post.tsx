@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import useInsert from '../../hooks/useInsert';
+import supabase from '../../supabase/config';
 
 type inputProps = {
   name: string;
@@ -7,6 +9,7 @@ type inputProps = {
 
 const Post = () => {
   const [asset, setAsset] = useState<null | object>(null);
+  const { data, error, insertData } = useInsert('assets');
 
   const inputChangeHandler = ({ name, value }: inputProps) => {
     setAsset({ ...asset, [name]: value });
@@ -15,11 +18,13 @@ const Post = () => {
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(asset);
+    asset && insertData(asset);
   };
 
   return (
     <div className='py-16 bg-base-200 min-h-screen h-full text-lg'>
       <div className='container mx-auto max-w-screen-lg'>
+        {error && <div>{error.message}</div>}
         <h1 className='text-6xl text-center mb-16'>Add new asset</h1>
         <form onSubmit={onSubmitHandler}>
           <div className='grid grid-cols-2 gap-x-16 gap-y-4'>

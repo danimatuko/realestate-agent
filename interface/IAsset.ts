@@ -2,7 +2,7 @@ import { offeredFor } from '../types';
 
 export interface IAsset {
   id: string;
-  postedOn: Date;
+  created_at: Date;
   address: string;
   imgURL: string;
   type: string;
@@ -11,4 +11,5 @@ export interface IAsset {
   bedrooms: number;
   parking: boolean;
   offeredFor: offeredFor;
+  description: string;
 }
