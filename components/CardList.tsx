@@ -1,12 +1,20 @@
 import React from 'react';
+import { IAsset } from '../interface/IAsset';
 import Card from './Card';
 
-const CardList = ({ amount = 3 }) => {
+type Assets = {
+  assets: IAsset[] | null;
+};
+
+const CardList = ({ assets }: Assets) => {
   return (
     <section className='container mx-auto'>
       <div className='grid grid-cols-3 gap-4 py-16'>
-        {[...Array(amount).keys()].map(() => (
-          <Card key={Math.random()} />
+        {assets?.map((asset) => (
+          <Card
+            key={asset.id}
+            asset={asset}
+          />
         ))}
       </div>
     </section>

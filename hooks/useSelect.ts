@@ -3,7 +3,7 @@ import { PostgrestError } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 import supabase from '../supabase/config';
 
-const useFetch = (table: string) => {
+const useSelect = (table: string) => {
   const [data, setData] = useState<any[] | null>(null);
   const [error, setError] = useState<PostgrestError | null>(null);
 
@@ -21,3 +21,5 @@ const useFetch = (table: string) => {
 
   return { data, error };
 };
+
+export default useSelect;
