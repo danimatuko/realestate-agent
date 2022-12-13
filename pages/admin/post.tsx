@@ -141,7 +141,7 @@ const Post = () => {
                 <label className='flex items-center gap-2'>
                   <span className='mr-1'>Rent</span>
                   <input
-                    name='offerdFor'
+                    name='offeredFor'
                     type='radio'
                     value='rent'
                     className='radio checked:bg-green-500'
@@ -150,7 +150,7 @@ const Post = () => {
                   <label className='label cursor-pointer'>
                     <span className='mr-1'>Sale</span>
                     <input
-                      name='offerdFor'
+                      name='offeredFor'
                       type='radio'
                       value='sale'
                       className='radio checked:bg-blue-500'

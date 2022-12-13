@@ -1,13 +1,17 @@
 import React from 'react';
 
-const Carousel = () => {
+type carouselProps = {
+  src: string;
+};
+
+const Carousel = ({ src }: carouselProps) => {
   return (
     <div className='carousel  h-[30rem] mx-auto'>
       <div
         id='slide1'
         className='carousel-item relative w-full'>
         <img
-          src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
+          src={src}
           className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
@@ -27,7 +31,7 @@ const Carousel = () => {
         id='slide2'
         className='carousel-item relative w-full'>
         <img
-          src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
+          src={src}
           className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
@@ -47,7 +51,7 @@ const Carousel = () => {
         id='slide3'
         className='carousel-item relative w-full'>
         <img
-          src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
+          src={src}
           className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
@@ -67,7 +71,7 @@ const Carousel = () => {
         id='slide4'
         className='carousel-item relative w-full'>
         <img
-          src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg'
+          src={src}
           className='w-full h-full'
         />
         <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>

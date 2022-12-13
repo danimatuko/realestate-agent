@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { IAsset } from '../interface/IAsset';
@@ -11,11 +10,11 @@ type cardProps = {
 
 const Card = ({ asset }: cardProps) => {
   return (
-    <Link href={`assets/${asset.id}}`}>
+    <Link href={`assets/${asset.id}`}>
       <div className='card card-compact w-96 bg-base-100 shadow-xl'>
         <picture>
           <img
-            src='https://placeimg.com/400/225/arch'
+            src={asset.imgURL}
             alt='Shoes'
             className='rounded-t-lg'
           />
