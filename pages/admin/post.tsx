@@ -7,6 +7,15 @@ type inputProps = {
   value: string;
 };
 
+const assetTypeOptions = [
+  'House',
+  'Appartment',
+  'Penthouse',
+  'Duplex',
+  'Studio',
+  'Garden appartment',
+];
+
 const Post = () => {
   const [asset, setAsset] = useState<null | object>(null);
   const { data, error, insertData } = useInsert('assets');
@@ -38,7 +47,7 @@ const Post = () => {
                 className='input w-full mb-4'
                 onChange={(e) => inputChangeHandler(e.target)}
               />
-            </label>{' '}
+            </label>
             <div>
               <label className='w-1/2'>
                 <span className='block font-medium text-slate-700 mb-2'>
@@ -52,13 +61,11 @@ const Post = () => {
                   <option
                     value='Pick your favorite Simpson'
                     disabled>
-                    Pick your favorite Simpson
+                    Pick your asset
                   </option>
-                  <option>Homer</option>
-                  <option>Marge</option>
-                  <option>Bart</option>
-                  <option>Lisa</option>
-                  <option>Maggie</option>
+                  {assetTypeOptions.map((assetType) => (
+                    <option key={assetType}>{assetType}</option>
+                  ))}
                 </select>
               </label>
               <label className='w-1/2'>
@@ -72,7 +79,7 @@ const Post = () => {
                   onChange={(e) => inputChangeHandler(e.target)}
                 />
               </label>
-              <label className='w-1/2 mb-4'>
+              <div className='w-1/2 mb-4'>
                 <span className=' font-medium text-slate-700 mb-2'>
                   Parking
                 </span>
@@ -96,7 +103,7 @@ const Post = () => {
                     />
                   </label>
                 </label>
-              </label>{' '}
+              </div>
             </div>
             <div>
               <div className='flex gap-6'>
@@ -122,7 +129,7 @@ const Post = () => {
                     onChange={(e) => inputChangeHandler(e.target)}
                   />
                 </label>
-              </div>{' '}
+              </div>
               <label className='w-1/2'>
                 <span className='block font-medium text-slate-700 mb-2'>
                   Images
@@ -158,8 +165,13 @@ const Post = () => {
                     />
                   </label>
                 </label>
-              </label>{' '}
-            </div>
+              </label>
+            </div>{' '}
+            <textarea
+              name='description'
+              rows={4}
+              className='textarea col-span-2'
+              onChange={(e) => inputChangeHandler(e.target)}></textarea>
           </div>
           <button
             type='submit'

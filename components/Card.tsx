@@ -16,7 +16,7 @@ const Card = ({ asset }: cardProps) => {
           <img
             src={asset.imgURL}
             alt='Shoes'
-            className='rounded-t-lg'
+            className='rounded-t-lg w-full h-80'
           />
         </picture>
         <div className='card-body items-center '>
