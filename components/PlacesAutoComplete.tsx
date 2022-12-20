@@ -29,7 +29,6 @@ export default function Places({ setAddress }: PlacesProps) {
 function Map({ setAddress }: PlacesProps) {
   const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
   const [selected, setSelected] = useState(center);
-  console.log(selected);
 
   return (
     <>
