@@ -37,7 +37,7 @@ const Asset = () => {
           <AssetDetails asset={asset?.[0]!} />
         </div>
         <div className='container mx-auto w-[60vw] h-[35rem] mb-64'>
-          Map Here
+          <Places />
         </div>
       </div>
     </div>

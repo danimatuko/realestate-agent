@@ -20,7 +20,7 @@ const assetTypeOptions = [
 const Post = () => {
   const [asset, setAsset] = useState<null | object>(null);
   const { data, error, insertData } = useInsert('assets');
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState<null | string>(null);
 
   const inputChangeHandler = ({ name, value }: inputProps) => {
     setAsset({ ...asset, [name]: value });
