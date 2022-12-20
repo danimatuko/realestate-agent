@@ -13,30 +13,35 @@ import {
 } from '@reach/combobox';
 import '@reach/combobox/styles.css';
 
-export default function Places() {
+const libraries = ['places'];
+
+export default function Places({ setAddress }) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY,
-    libraries: ['places'],
+    libraries,
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map />;
+  return <Map setAddress={setAddress} />;
 }
 
-function Map() {
+function Map({ setAddress }) {
   const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(center);
   console.log(selected);
 
   return (
     <>
-      <div className='places-container '>
-        <PlacesAutocomplete setSelected={setSelected} />
+      <div className='places-container'>
+        <PlacesAutocomplete
+          setSelected={setSelected}
+          setAddress={setAddress}
+        />
       </div>
 
       <GoogleMap
-        mapContainerStyle={{ width: 500, height: 500 }}
-        zoom={10}
+        mapContainerStyle={{ width: '100%', height: 500 }}
+        zoom={15}
         center={selected}
         mapContainerClassName='map-container'>
         {selected && <Marker position={selected} />}
@@ -45,7 +50,7 @@ function Map() {
   );
 }
 
-const PlacesAutocomplete = ({ setSelected }) => {
+const PlacesAutocomplete = ({ setSelected, setAddress }) => {
   const {
     ready,
     value,
@@ -61,6 +66,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
     const results = await getGeocode({ address });
     const { lat, lng } = await getLatLng(results[0]);
     setSelected({ lat, lng });
+    setAddress(results[0].formatted_address);
   };
 
   return (
@@ -69,7 +75,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         disabled={!ready}
-        className='combobox-input'
+        className='select w-full mb-4'
         placeholder='Search an address'
       />
       <ComboboxPopover>

@@ -20,6 +20,7 @@ const assetTypeOptions = [
 const Post = () => {
   const [asset, setAsset] = useState<null | object>(null);
   const { data, error, insertData } = useInsert('assets');
+  const [address, setAddress] = useState('');
 
   const inputChangeHandler = ({ name, value }: inputProps) => {
     setAsset({ ...asset, [name]: value });
@@ -27,6 +28,7 @@ const Post = () => {
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    setAsset({ ...asset, address: address });
     console.log(asset);
     asset && insertData(asset);
   };
@@ -36,20 +38,8 @@ const Post = () => {
       {error && <div>{error.message}</div>}
       <h1 className='text-6xl text-center mb-16'>Add new asset</h1>
       <div className='container mx-auto max-w-screen-lg'>
-        <PlacesAutoComplete />
         <form onSubmit={onSubmitHandler}>
           <div className='grid grid-cols-2 gap-x-16 gap-y-4'>
-            <label className='col-span-2'>
-              <span className='block font-medium text-slate-700 mb-2'>
-                Address
-              </span>
-              <input
-                name='address'
-                type='text'
-                className='input w-full mb-4'
-                onChange={(e) => inputChangeHandler(e.target)}
-              />
-            </label>
             <div>
               <label className='w-1/2'>
                 <span className='block font-medium text-slate-700 mb-2'>
@@ -174,6 +164,10 @@ const Post = () => {
               rows={4}
               className='textarea col-span-2'
               onChange={(e) => inputChangeHandler(e.target)}></textarea>
+          </div>{' '}
+          <div className='py-4'>
+            <span className='mr-1'>Address</span>
+            <PlacesAutoComplete setAddress={setAddress} />
           </div>
           <button
             type='submit'

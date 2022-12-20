@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import AssetDetails from '../../components/Asset/AssetDetails';
-import Map from '../../components/Asset/Map';
 import Carousel from '../../components/Carousel';
+import Places from '../../components/PlacesAutoComplete';
+
 import useSelect from '../../hooks/useSelect';
 import { IAsset } from '../../interface/IAsset';
 
@@ -36,7 +37,7 @@ const Asset = () => {
           <AssetDetails asset={asset?.[0]!} />
         </div>
         <div className='container mx-auto w-[60vw] h-[35rem] mb-64'>
-          <Map />
+          Map Here
         </div>
       </div>
     </div>
