@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PlacesAutoComplete from '../../components/PlacesAutoComplete';
 import useInsert from '../../hooks/useInsert';
 import supabase from '../../supabase/config';
 
@@ -32,9 +33,10 @@ const Post = () => {
 
   return (
     <div className='py-16 bg-base-200 min-h-screen h-full text-lg'>
+      {error && <div>{error.message}</div>}
+      <h1 className='text-6xl text-center mb-16'>Add new asset</h1>
       <div className='container mx-auto max-w-screen-lg'>
-        {error && <div>{error.message}</div>}
-        <h1 className='text-6xl text-center mb-16'>Add new asset</h1>
+        <PlacesAutoComplete />
         <form onSubmit={onSubmitHandler}>
           <div className='grid grid-cols-2 gap-x-16 gap-y-4'>
             <label className='col-span-2'>
