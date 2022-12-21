@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
+import supabase from '../../supabase/config';
 
 const Nav = () => {
+  async function signOut() {
+    const { error } = await supabase.auth.signOut();
+  }
+
   return (
     <nav className='bg-white shadow-lg'>
       <div className='md:flex items-center justify-between py-2 px-8 md:px-12'>
@@ -56,6 +61,16 @@ const Nav = () => {
             href='/admin/post'>
             New Post
           </Link>
+          <Link
+            className='txet-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'
+            href='/login'>
+            Login
+          </Link>
+          <button
+            className='txet-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'
+            onClick={signOut}>
+            Signout
+          </button>
         </div>
       </div>
     </nav>

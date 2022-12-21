@@ -18,15 +18,6 @@ export default function App({
 }>) {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
 
-  // const user = useUser();
-  (async (params: type) => {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    console.log(user);
-  })();
-
   return (
     <SessionContextProvider
       supabaseClient={supabaseClient}
