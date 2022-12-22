@@ -1,6 +1,8 @@
+import { Auth } from '@supabase/auth-ui-react';
 import React, { useEffect, useState } from 'react';
 import PlacesAutoComplete from '../../components/PlacesAutoComplete';
 import useInsert from '../../hooks/useInsert';
+import useSession from '../../hooks/useSession';
 import supabase from '../../supabase/config';
 
 type inputProps = {
@@ -16,18 +18,40 @@ const assetTypeOptions = [
   'Studio',
   'Garden appartment',
 ];
-
 const Post = () => {
   const [asset, setAsset] = useState<null | object>({});
   const { data, error, insertData } = useInsert('assets');
+  const [file, setFile] = useState<object | null>(null);
+  const CDN_URL = `https://atfszoepsqczsmmttzwo.supabase.co/storage/v1/object/public/images`;
+
+  const { user } = useSession();
 
   const inputChangeHandler = ({ name, value }: inputProps) => {
     setAsset({ ...asset, [name]: value });
   };
 
+  const fileChangeHandler = (e: any) => {
+    setFile(e.target.files[0]);
+  };
+
+  const uplouadFile = async () => {
+    const { data, error } = await supabase.storage
+      .from('images')
+      .upload(`${asset?.address}/${file.name}`, file, {
+        cacheControl: '3600',
+        upsert: false,
+      });
+
+    if (data) {
+      console.log(data);
+    }
+    error && console.log(error);
+  };
+
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(asset);
+    uplouadFile();
     asset && insertData(asset);
   };
 
@@ -128,7 +152,7 @@ const Post = () => {
                   name='imageURL'
                   type='file'
                   className='input w-full mb-4'
-                  onChange={(e) => inputChangeHandler(e.target)}
+                  onChange={(e) => fileChangeHandler(e)}
                 />
               </label>
               <label className='w-1/2'>
