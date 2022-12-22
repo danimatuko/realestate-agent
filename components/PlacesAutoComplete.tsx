@@ -20,27 +20,33 @@ import { Libraries, PlacesProps } from '../types';
 
 const libraries: Libraries = ['places'];
 
-export default function Places({ setAddress }: PlacesProps) {
+export default function Places({ asset, setAsset }: PlacesProps) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!,
     libraries,
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map setAddress={setAddress} />;
+  return (
+    <Map
+      asset={asset}
+      setAsset={setAsset}
+    />
+  );
 }
 
-function Map({ setAddress }: PlacesProps) {
+function Map({ asset, setAsset }: PlacesProps) {
   const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
   const [selected, setSelected] = useState(center);
 
   return (
     <>
       <div className='places-container'>
-        {setAddress && (
+        {center && (
           <PlacesAutocomplete
             setSelected={setSelected}
-            setAddress={setAddress}
+            asset={asset}
+            setAsset={setAsset}
           />
         )}
       </div>
@@ -55,7 +61,7 @@ function Map({ setAddress }: PlacesProps) {
   );
 }
 
-const PlacesAutocomplete = ({ setSelected, setAddress }: PlacesProps) => {
+const PlacesAutocomplete = ({ asset, setAsset, setSelected }: PlacesProps) => {
   const {
     ready,
     value,
@@ -63,6 +69,7 @@ const PlacesAutocomplete = ({ setSelected, setAddress }: PlacesProps) => {
     suggestions: { status, data },
     clearSuggestions,
   } = usePlacesAutocomplete();
+  const [address, setAddress] = useState<null | string>(null);
 
   const handleSelect = async (address: string) => {
     setValue(address, false);
@@ -70,8 +77,9 @@ const PlacesAutocomplete = ({ setSelected, setAddress }: PlacesProps) => {
 
     const results = await getGeocode({ address });
     const { lat, lng } = await getLatLng(results[0]);
+
     setSelected?.({ lat, lng });
-    setAddress?.(results[0].formatted_address);
+    setAsset?.({ ...asset, address: address });
   };
 
   return (

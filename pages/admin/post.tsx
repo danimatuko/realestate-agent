@@ -18,9 +18,8 @@ const assetTypeOptions = [
 ];
 
 const Post = () => {
-  const [asset, setAsset] = useState<null | object>(null);
+  const [asset, setAsset] = useState<null | object>({});
   const { data, error, insertData } = useInsert('assets');
-  const [address, setAddress] = useState<null | string>(null);
 
   const inputChangeHandler = ({ name, value }: inputProps) => {
     setAsset({ ...asset, [name]: value });
@@ -28,7 +27,6 @@ const Post = () => {
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    setAsset({ ...asset, address: address });
     console.log(asset);
     asset && insertData(asset);
   };
@@ -167,7 +165,10 @@ const Post = () => {
           </div>{' '}
           <div className='py-4'>
             <span className='mr-1'>Address</span>
-            <PlacesAutoComplete setAddress={setAddress} />
+            <PlacesAutoComplete
+              asset={asset}
+              setAsset={setAsset}
+            />
           </div>
           <button
             type='submit'
