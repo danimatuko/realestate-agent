@@ -32,21 +32,6 @@ const Nav = () => {
         </div>
         <div className='flex flex-col md:flex-row hidden md:block -mx-2'>
           <Link
-            href='/'
-            className='text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'>
-            Home
-          </Link>
-          <Link
-            href='#about'
-            className='text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'>
-            About
-          </Link>
-          <Link
-            href='#'
-            className='txet-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'>
-            Contact
-          </Link>
-          <Link
             className='txet-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'
             href='/assets'>
             Assets
@@ -60,6 +45,11 @@ const Nav = () => {
             className='txet-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'
             href='/admin/post'>
             New Post
+          </Link>
+          <Link
+            className='txet-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'
+            href='/signup'>
+            Signup
           </Link>
           <Link
             className='txet-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2'
