@@ -21,7 +21,7 @@ const assetTypeOptions = [
 const Post = () => {
   const [asset, setAsset] = useState<null | object>({});
   const { data, error, insertData } = useInsert('assets');
-  const [file, setFile] = useState<object | null>(null);
+  const [files, setFiles] = useState([]);
   const CDN_URL = `https://atfszoepsqczsmmttzwo.supabase.co/storage/v1/object/public/images`;
 
   const { user } = useSession();
@@ -31,13 +31,13 @@ const Post = () => {
   };
 
   const fileChangeHandler = (e: any) => {
-    setFile(e.target.files[0]);
+    setFiles(e.target.files);
   };
 
-  const uplouadFile = async () => {
+  const uplouadFile = async (file) => {
     const { data, error } = await supabase.storage
       .from('images')
-      .upload(`${asset?.address}/${file.name}`, file, {
+      .upload(`${asset?.address}/${file?.name}`, file, {
         cacheControl: '3600',
         upsert: false,
       });
@@ -50,8 +50,12 @@ const Post = () => {
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    for (let file of files) {
+      uplouadFile(file);
+      console.log(file);
+    }
     console.log(asset);
-    uplouadFile();
+
     asset && insertData(asset);
   };
 
@@ -149,6 +153,8 @@ const Post = () => {
                   Images
                 </span>
                 <input
+                  multiple
+                  accept='image/*'
                   name='imageURL'
                   type='file'
                   className='input w-full mb-4'
